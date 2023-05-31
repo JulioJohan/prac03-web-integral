@@ -1,0 +1,31 @@
+<mat-grid-list cols="1" rowHeight="100%" class="fondo">
+    <mat-grid-tile>
+        <mat-card [class.mat-elevation-z8]="true">
+            <mat-card-content>
+                <h1>Inicio de Sesión</h1>
+                <form [formGroup]="formulario" (ngSubmit)="login()">
+                    <div fxLayout="column" fxLayoutAlign="space-around center">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Usuario</mat-label>
+                            <input matInput type="text" mat-button formControlName="usuario">
+                            <mat-error *ngIf="baseForm.isValidField(formulario.get('usuario'))">
+                                {{ baseForm.getErrorMessage(formulario.get('usuario'))}}
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput type="text" formControlName="password">
+                            <mat-error *ngIf="baseForm.isValidField(formulario.get('password'))">
+                                {{baseForm.getErrorMessage(formulario.get('password'))}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="button-row mb-24 text-center">
+                        <button type="submit" mat-raised-button color="primary" [disabled]="formulario.invalid">Iniciar
+                            Sesión</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

@@ -21,9 +21,11 @@
     "@angular/platform-browser": "^16.0.2",
     "@angular/platform-browser-dynamic": "^16.0.2",
     "@angular/router": "^16.0.2",
+    "@auth0/angular-jwt": "^5.1.2",
     "angular-feather": "^6.3.0",
     "apexcharts": "^3.35.3",
     "ng-apexcharts": "^1.7.1",
+    "ng-recaptcha": "^12.0.1",
     "rxjs": "~7.5.5",
     "zone.js": "~0.13.0"
   },

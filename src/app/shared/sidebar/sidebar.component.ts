@@ -1,6 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, map, shareReplay } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 interface sidebarMenu {
   link: string;
@@ -14,7 +15,7 @@ interface sidebarMenu {
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
 
   search: boolean = false;
@@ -25,9 +26,27 @@ export class SidebarComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  data:any = {};
+
+  constructor(private breakpointObserver: BreakpointObserver, private authService:AuthService) { }
+
+
+  ngOnInit(): void {
+    this.getData();
+  }
 
   routerActive: string = "activelink";
+
+  onLogout(){
+    this.authService.logout();
+    this.data = null;
+  }
+
+  getData(){
+    this.authService.tokenData$.subscribe((data:any)=>{
+      this.data = data;
+    })
+  }
 
   sidebarMenu: sidebarMenu[] = [
     {

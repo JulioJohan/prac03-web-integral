@@ -13,33 +13,39 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DemoFlexyModule } from './demo-flexy-module';
 import { allIcons } from 'angular-feather/icons';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
 
 
 
-// const modulos: any[] = [
-//     FeatherModule,
-//     MatButtonModule,
-//     MatCardModule,
-//     MatInputModule,
-//     MatIconModule,
-//     MatGridListModule,
-//     MatFormFieldModule,
-//     MatToolbarModule,
-//     MatMenuModule,
-//     MatSidenavModule,
-//     ReactiveFormsModule,
+const modulos: any[] = [
+    FeatherModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
+     
 
-// ]
+]
 
 
 @NgModule({
     declarations: [],
     imports: [
         DemoFlexyModule,
-        FeatherModule.pick(allIcons)
+        FeatherModule.pick(allIcons),
+        // MatSnackBarModule 
+        ...modulos
     ],
     exports: [
         DemoFlexyModule,

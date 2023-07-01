@@ -7,9 +7,9 @@
                     <div fxLayout="column" fxLayoutAlign="space-around center">
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Usuario</mat-label>
-                            <input matInput type="text" mat-button formControlName="usuario">
-                            <mat-error *ngIf="baseForm.isValidField(formulario.get('usuario'))">
-                                {{ baseForm.getErrorMessage(formulario.get('usuario'))}}
+                            <input matInput type="text" mat-button formControlName="username">
+                            <mat-error *ngIf="baseForm.isValidField(formulario.get('username'))">
+                                {{ baseForm.getErrorMessage(formulario.get('username'))}}
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="outline">

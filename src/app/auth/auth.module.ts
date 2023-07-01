@@ -6,7 +6,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from '../materila.module';
-
+import { enviroment } from '../environments/environment';
+import { RecaptchaV3Module,RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 
 
 
@@ -24,8 +25,13 @@ import { MaterialModule } from '../materila.module';
     ReactiveFormsModule,
     HttpClientModule,    
     MatDialogModule,  
-    MaterialModule
-  ], 
+    MaterialModule,
+    RecaptchaV3Module
+  ],
+  providers: [{
+    provide: RECAPTCHA_V3_SITE_KEY,    
+    useValue:enviroment.recaptcha.siteKey
+  }] 
   
 
 })

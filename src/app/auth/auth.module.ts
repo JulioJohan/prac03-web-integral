@@ -5,18 +5,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
 import { MaterialModule } from '../materila.module';
 import { enviroment } from '../environments/environment';
 import { RecaptchaV3Module,RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
+import { AuthRoutingModule } from './auth.routing.module';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   exports:[
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,

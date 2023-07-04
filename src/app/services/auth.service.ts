@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { AuthResponse } from '../models/auth.interface';
 import { enviroment } from '../environments/environment';
 import { catchError, map } from 'rxjs/operators';
+import { User } from '../models/user';
 
 const helper = new JwtHelperService();
 
@@ -33,10 +34,9 @@ export class AuthService {
 
   // never es cunado no regresa nada
   handleError(error:any):Observable<never>{
-    console.log(error)
     let errorMessage:string = "Ocurrio un error";
     if(error){
-      errorMessage = `${error.error.message}`;
+      errorMessage = `${error.error.msg}`;
     }
 
     this.snackBar.open(errorMessage,'',{
@@ -57,7 +57,7 @@ export class AuthService {
     localStorage.removeItem('token');
     this.token.next("");
     this.tokenData.next(null);
-    this.router.navigate(['/'])
+    this.router.navigate(['/login'])
   }
 
   checkToken(){
@@ -76,25 +76,28 @@ export class AuthService {
     this.token.next(token!);
     // Renovar los datos del perfil
     const {iat,exp, ...data } = helper.decodeToken(token!);
+    console.log(data)
     this.tokenData.next(data);
   }
 
-  login(loginData:any):Observable<AuthResponse>{    
-    console.log('login' + JSON.stringify(loginData))
-    return this.http.post<AuthResponse>(`${enviroment.API_URL}/auth/`,loginData)
-    // return this.http.post<AuthResponse>(`${enviroment.API_URL}/auth/`,loginData).
-    // pipe(map((data:AuthResponse)=>{
-    //   console.log(data)
-    //   if(data.token){
-    //     this.saveLocalStorage(data.token);
-    //     this.token.next(data.token);
-    //     this.router.navigate(['/home/home']);
-    //     this.checkToken();
-    //   }
-    //   return data;
+  register(user:User){
+    return this.http.post(`${enviroment.API_URL}/usuario/`,user)  
+  }
 
-    // }),
-    // catchError((error)=>this.handleError(error)));
+  login(loginData:any):Observable<AuthResponse>{    
+    return this.http.post<AuthResponse>(`${enviroment.API_URL}/`,loginData).
+    pipe(map((data:AuthResponse)=>{
+      console.log(data)
+      if(data.token){
+        this.saveLocalStorage(data.token);
+        this.token.next(data.token);
+        this.router.navigate(['/home']);
+        this.checkToken();
+      }
+      return data;
+
+    }),
+    catchError((error)=>this.handleError(error)));
   
   }
 

@@ -46,4 +46,9 @@ export class LoginComponent {
     })
     // this.router.navigateByUrl('/home/home')
   }
+
+  goRegister(){
+    console.log('entre')
+    this.router.navigate(['/register'])
+  }
 }

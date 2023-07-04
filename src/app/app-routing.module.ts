@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagesRoutingModule } from './pages/pages.routing';
 import { AuthRoutingModule } from './auth/auth.routing.module';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
   // {
@@ -28,6 +30,10 @@ const routes: Routes = [
   //     {path:"button", component:ButtonsComponent},
   //   ]
   // },
+  {
+    path:'register',component: RegisterComponent
+  },
+  { path: 'login',component:LoginComponent},
 
   {path:"", redirectTo:"/login", pathMatch:"full"},
   {path:"**", redirectTo:"/login", pathMatch:"full"},

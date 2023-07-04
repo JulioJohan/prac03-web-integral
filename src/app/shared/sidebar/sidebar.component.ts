@@ -44,6 +44,7 @@ export class SidebarComponent implements OnInit {
 
   getData(){
     this.authService.tokenData$.subscribe((data:any)=>{
+      console.log(data)
       this.data = data;
     })
   }

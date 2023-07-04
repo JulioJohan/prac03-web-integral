@@ -14,7 +14,7 @@
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Contraseña</mat-label>
-                            <input matInput type="text" formControlName="password">
+                            <input matInput type="password" formControlName="password">
                             <mat-error *ngIf="baseForm.isValidField(formulario.get('password'))">
                                 {{baseForm.getErrorMessage(formulario.get('password'))}}
                             </mat-error>
@@ -23,8 +23,11 @@
                     <div class="button-row mb-24 text-center">
                         <button type="submit" mat-raised-button color="primary" [disabled]="formulario.invalid">Iniciar
                             Sesión</button>
-                    </div>
+                    </div>                    
                 </form>
+                <div class="button-row mb-24 text-center">
+                    <button (click)="goRegister()" mat-raised-button color="basic" >Registrar</button>
+                </div>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>

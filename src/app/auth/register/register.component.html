@@ -1,0 +1,61 @@
+<mat-grid-list cols="1" rowHeight="100%" class="fondo">
+    <mat-grid-tile>
+        <mat-card [class.mat-elevation-z8]="true">
+            <mat-card-content>
+                <h1>Registrar</h1>
+                <form [formGroup]="formRegister" (ngSubmit)="register()">
+                    <div fxLayout="column" fxLayoutAlign="space-around center">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Nombre Completo</mat-label>
+                            <input matInput type="text" mat-button formControlName="name">
+                            <mat-error *ngIf="baseForm.isValidField(formRegister.get('name'))">
+                                {{ baseForm.getErrorMessage(formRegister.get('username'))}}
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput type="text" formControlName="lastname">
+                            <mat-error *ngIf="baseForm.isValidField(formRegister.get('lastname'))">
+                                {{baseForm.getErrorMessage(formRegister.get('password'))}}
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Nombre del Usuario</mat-label>
+                            <input matInput type="text" formControlName="username">
+                            <mat-error *ngIf="baseForm.isValidField(formRegister.get('username'))">
+                                {{baseForm.getErrorMessage(formRegister.get('username'))}}
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput type="password" formControlName="password">
+                            <mat-error *ngIf="baseForm.isValidField(formRegister.get('password'))">
+                                {{baseForm.getErrorMessage(formRegister.get('password'))}}
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Rol</mat-label>
+                            <mat-select formControlName="role">
+                                <mat-option value="admin">Admin</mat-option>
+                                <mat-option value="user">User</mat-option>
+                              </mat-select>
+                            <!-- <input matInput type="password" formControlName="role"> -->
+                            <mat-error *ngIf="baseForm.isValidField(formRegister.get('role'))">
+                                {{baseForm.getErrorMessage(formRegister.get('role'))}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="button-row mb-24 text-center">
+                        <button type="submit" mat-raised-button color="primary" [disabled]="formRegister.invalid">
+                            Registrar</button>
+                    </div>
+
+                    <div class="button-row mb-24 text-center">
+                        <button (click)="login()" mat-raised-button color="basic">
+                            Iniciar Sesión</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

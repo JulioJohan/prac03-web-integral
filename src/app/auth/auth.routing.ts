@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -12,6 +13,8 @@ const routes: Routes = [
     //     loadChildren:() => import('../auth/auth-children-routes.module').then(modulo => modulo.AuthChildrenRoutesModule)  
     // },
     { path: 'login', component: LoginComponent },
+    { path:'register ',component:RegisterComponent}
+
     //{ path: 'path/:routeParam', component: MyComponent },
     //{ path: 'staticPath', component: ... },
     //{ path: '**', component: ... },
@@ -19,8 +22,8 @@ const routes: Routes = [
     //{ path: ..., component: ..., data: { message: 'Custom' }
 ];
 
-@NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-})
-export class AuthRoutingModule { }
+// @NgModule({
+//     imports: [RouterModule.forChild(routes)],
+//     exports: [RouterModule]
+// })
+// export class AuthRoutingModule { }

@@ -18,9 +18,10 @@ import { SliderComponent } from '../components/slider/slider.component';
 import { TooltipsComponent } from '../components/tooltips/tooltips.component';
 import { SlideToggleComponent } from '../components/slide-toggle/slide-toggle.component';
 import { ButtonsComponent } from '../components/buttons/buttons.component';
+import { CheckLoginGuard } from '../guards/check-login.guard';
 
 const childRoutes:Routes = [
-  {path:"home", component:HomeComponent},
+  {path:"home", component:HomeComponent,canActivate:[CheckLoginGuard]},
   {path:"alerts", component:AlertsComponent},
   {path:"forms", component:FormsComponent},
   {path:"table", component:ProductComponent},
